@@ -1,1 +1,1 @@
-export 'list_player.dart';
+export 'list_player_page.dart';

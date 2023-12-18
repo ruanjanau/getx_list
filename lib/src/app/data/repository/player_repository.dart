@@ -8,7 +8,7 @@ import '../datasource/datasource.dart';
 class PlayersRepository implements IPlayersRepository {
   final IPlayersDataSource dataSource;
 
-  PlayersRepository(this.dataSource);
+  PlayersRepository({required this.dataSource});
   @override
   Future<Either<PlayersError, List<PlayersEntity>>> getAll() async {
     try {

@@ -11,9 +11,7 @@ class PlayerDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text('Detalhes do Jogador'),
-        ),
+        title: const Text('Detalhes do Jogador'),
       ),
       body: ListView(
         children: [

@@ -1,3 +1,4 @@
+// ignore_for_file: deprecated_member_use
 import 'package:dio/dio.dart';
 
 class PlayersApi {
@@ -18,15 +19,12 @@ class PlayersApi {
   static InterceptorsWrapper getInterceptor() {
     return InterceptorsWrapper(
       onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-        // Pode adicionar lógica de interceptação aqui, se necessário
         return handler.next(options);
       },
       onResponse: (Response response, ResponseInterceptorHandler handler) {
-        // Pode adicionar lógica de interceptação aqui, se necessário
         return handler.next(response);
       },
       onError: (DioError error, ErrorInterceptorHandler handler) {
-        // Pode adicionar lógica de interceptação aqui, se necessário
         return handler.next(error);
       },
     );

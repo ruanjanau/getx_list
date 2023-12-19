@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:dio/dio.dart';
+import 'package:getx_list/src/app/dio/mock_api.dart';
 
 import '../model/model.dart';
 
@@ -9,13 +9,13 @@ abstract class IPlayersDataSource {
 }
 
 class PlayersDataSource implements IPlayersDataSource {
-  final Dio dio;
+  final PlayersApi playersApi;
 
-  PlayersDataSource({required this.dio});
+  PlayersDataSource({required this.playersApi});
   @override
   FutureOr<List<PlayersModel>> getPlayers() async {
     final response =
-        await dio.get('https://6573803a063f876cec9cf9f6.mockapi.io/users/');
+        await playersApi.dioClient.get('${playersApi.baseUrl}users/');
 
     return (response.data as List).map(PlayersModel.fromJson).toList();
   }

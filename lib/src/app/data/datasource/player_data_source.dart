@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:getx_list/src/app/dio/mock_api.dart';
+import '../../dio/dio.dart';
 
 import '../model/model.dart';
 

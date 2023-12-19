@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_list/src/app/data/datasource/datasource.dart';
-import 'package:getx_list/src/app/dio/mock_api.dart';
+import 'package:getx_list/src/app/dio/players_api.dart';
 import '../controller/controller.dart';
 import 'components/details.dart';
 

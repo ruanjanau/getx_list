@@ -1,17 +1,17 @@
 import 'package:dio/dio.dart';
 
-class MockApi {
+class PlayersApi {
   Dio dioClient = Dio();
   final baseUrl = 'https://6573803a063f876cec9cf9f6.mockapi.io/';
 
-  static final MockApi _instance = MockApi._internal();
+  static final PlayersApi _instance = PlayersApi._internal();
 
-  factory MockApi() {
+  factory PlayersApi() {
     _instance.dioClient.interceptors.add(getInterceptor());
     return _instance;
   }
 
-  MockApi._internal();
+  PlayersApi._internal();
 
   Dio get dio => dioClient;
 

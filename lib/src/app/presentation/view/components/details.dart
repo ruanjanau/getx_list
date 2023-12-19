@@ -1,2 +1,2 @@
-export 'details_player.dart';
 export 'player_tile.dart';
+export 'details_player_item.dart';

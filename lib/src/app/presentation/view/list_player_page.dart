@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_list/src/app/data/datasource/datasource.dart';
-import 'package:getx_list/src/app/dio/players_api.dart';
+import '../../data/datasource/datasource.dart';
+import '../../dio/players_api.dart';
 import '../controller/controller.dart';
 import 'components/details.dart';
 
-class ListPlayerPage extends StatefulWidget {
-  const ListPlayerPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<ListPlayerPage> createState() => _ListPlayerPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _ListPlayerPageState extends State<ListPlayerPage> {
+class _HomePageState extends State<HomePage> {
   late final PlayersController _controller;
 
   @override
@@ -34,19 +34,27 @@ class _ListPlayerPageState extends State<ListPlayerPage> {
         ),
         body: Center(
           child: Obx(() {
-            if (_controller.loading.value) {
-              return const CircularProgressIndicator();
-            }
-            return ListView.builder(
-                itemCount: _controller.allPlayers.length,
-                itemBuilder: (_, index) {
-                  final player = _controller.allPlayers[index];
-                  return PlayersTile(
-                    name: player.name!,
-                    profession: player.profession!,
-                    image: player.image!,
-                  );
-                });
+            return _controller.loading.value
+                ? const CircularProgressIndicator()
+                : ListView.builder(
+                    itemCount: _controller.allPlayers.length,
+                    itemBuilder: (_, index) {
+                      final player = _controller.allPlayers[index];
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            '/player_details/',
+                            arguments: player,
+                          );
+                        },
+                        child: PlayersTile(
+                          name: player.name!,
+                          profession: player.profession!,
+                          image: player.image!,
+                        ),
+                      );
+                    });
           }),
         ));
   }

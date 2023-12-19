@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_list/src/app/presentation/view/view.dart';
+
+import 'src/app/data/model/model.dart';
+import 'src/app/presentation/view/view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +14,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialRoute: '/home',
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ListPlayerPage(),
+      routes: {
+        '/home': (_) => const HomePage(),
+        '/player_details/': (context) {
+          final player =
+              ModalRoute.of(context)!.settings.arguments as PlayersModel;
+          return PlayerDetails(player: player);
+        }
+      },
     );
   }
 }

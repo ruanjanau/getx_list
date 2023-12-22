@@ -1,9 +1,11 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../data/datasource/datasource.dart';
-import '../../dio/players_api.dart';
+
 import '../controller/controller.dart';
 import 'components/details.dart';
+import 'package:get/instance_manager.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,11 +20,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _controller = PlayersController(
-      dataSource: PlayersDataSource(
-        playersApi: PlayersApi(),
-      ),
-    );
+    _controller = Get.find<PlayersController>();
     _controller.getPlayers();
   }
 
